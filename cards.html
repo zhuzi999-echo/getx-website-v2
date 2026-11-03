@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<base href="/getx-website-v2/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>考季体验卡｜得到 GetX</title>
+<meta name="description" content="按备考阶段准备的体验卡。官网不展示价格。">
+<link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="index.html" aria-label="得到 GetX 首页"><img src="img/getx-logo.webp" alt="得到 GetX"></a>
+    <nav class="menu" aria-label="主导航">
+      <a href="about.html">品牌故事</a>
+      <a href="seats.html">座位设计</a>
+      <a href="products.html">产品配置</a>
+      <a href="public.html">公共空间</a>
+      <a href="stories.html">会员故事</a>
+      <a href="stores.html">门店</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-dark btn-sm" href="index.html#booking">预约座位</a>
+      <button class="burger" type="button" aria-label="打开菜单" id="burger"><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="about.html">品牌故事</a>
+      <a href="seats.html">座位设计</a>
+      <a href="products.html">产品配置</a>
+      <a href="public.html">公共空间</a>
+      <a href="stories.html">会员故事</a>
+      <a href="stores.html">门店</a>
+    
+    <a href="cards.html">考季体验卡</a>
+    <a href="news.html">最新资讯</a>
+    <a href="index.html#booking">预约座位</a>
+  </div>
+</header>
+<main class="page">
+  <div class="wrap">
+    <p class="crumb"><a href="index.html">首页</a> · 考季体验卡</p>
+    
+    <h1>考季体验卡</h1>
+    <p class="en">Exam Season Pass</p>
+    <p class="lead">按备考阶段准备，具体权益以到店/小程序为准；官网不展示价格。</p>
+    <div class="phase-list">
+      <article class="phase"><div class="no">01</div><h2>启程卡</h2><p>刚起跑，先熟悉节奏和座位。</p></article>
+      <article class="phase"><div class="no">02</div><h2>冲刺卡</h2><p>考前加频次，优先沉浸/VIP 深学位。</p></article>
+      <article class="phase"><div class="no">03</div><h2>稳定卡</h2><p>长期备考，把这里当成固定的第三空间。</p></article>
+      <article class="phase"><div class="no">04</div><h2>过渡卡</h2><p>考季间隙，保持手感不断档。</p></article>
+    </div>
+    <p class="lead" style="margin-top:28px"><a class="btn btn-dark" href="index.html#booking">到小X微信了解体验卡</a></p>
+
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="img/getx-logo.webp" alt="" style="height:28px;filter:brightness(10)">
+        <div class="name">得到 GetX</div>
+        <div class="tag">得到，此刻开始</div>
+      </div>
+      <div class="footer-col">
+        <h4>探索</h4>
+        <a href="about.html">品牌故事</a>
+        <a href="seats.html">座位设计</a>
+        <a href="products.html">产品配置</a>
+        <a href="stories.html">会员故事</a>
+      </div>
+      <div class="footer-col">
+        <h4>空间与门店</h4>
+        <a href="public.html">公共空间</a>
+        <a href="cards.html">考季体验卡</a>
+        <a href="stores.html">查找门店</a>
+        <a href="news.html">最新资讯</a>
+      </div>
+      <div class="footer-col">
+        <h4>预约</h4>
+        <a href="index.html#booking">预约座位 · 跳转小程序</a>
+        <a href="stores.html">空间位置</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 得到 GetX</div>
+  </div>
+</footer>
+<script>
+(function(){
+  var b=document.getElementById('burger'), m=document.getElementById('mobileNav');
+  if(b&&m){
+    b.addEventListener('click',function(){m.classList.toggle('open');});
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');});});
+  }
+})();
+</script>
+
+</body>
+</html>
