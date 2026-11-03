@@ -115,14 +115,13 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
 
 .amenity-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch}
 .amenity-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
-.amenity-card .ph{aspect-ratio:16/10;overflow:hidden;background:#eee}
-.amenity-card .ph img{width:100%;height:100%;object-fit:cover}
+.amenity-card .ph{aspect-ratio:4/3;overflow:hidden;background:#f3f2ef}
+.amenity-card .ph img{width:100%;height:100%;object-fit:contain;object-position:center;background:#f3f2ef}
 .amenity-card .tx{padding:22px}
 #public .amenity-grid,#lounge .amenity-grid{grid-template-columns:1fr}
 #lounge .amenity-card{display:block}
-#public .amenity-card .ph,#lounge .amenity-card .ph{aspect-ratio:16/9;min-height:0;height:auto;background:#f3f2ef}
-#public .pic-swap .pic-track img,#lounge .pic-swap .pic-track img,#lounge .amenity-card .ph img{object-fit:contain;background:#f3f2ef}
-#lounge .amenity-card .tx{padding:28px 28px 32px}
+#public .amenity-card .ph,#lounge .amenity-card .ph{aspect-ratio:4/3;min-height:0;height:auto;max-height:none;background:#f3f2ef}
+#public .pic-swap .pic-track img,#lounge .pic-swap .pic-track img,#lounge .amenity-card .ph img{width:100%;height:100%;object-fit:contain;object-position:center;background:#f3f2ef}
 .amenity-card ul{margin-top:12px;display:grid;gap:8px;font-size:14px;color:var(--ink2)}
 
 .cards-track{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
