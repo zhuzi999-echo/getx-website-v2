@@ -130,12 +130,21 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
 .phase p{font-size:13px;color:var(--ink2);margin-top:12px}
 .cards-cta{text-align:center;margin-top:32px}
 
-.stories-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.story-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 24px 24px;box-shadow:var(--shadow)}
-.story-card .badge{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em}
-.story-card h3{font-size:18px;font-weight:700;margin-top:10px;line-height:1.5}
-.story-card p{font-size:14px;color:var(--ink2);margin-top:12px}
-.story-card .who{margin-top:18px;font-size:13px;color:var(--muted)}
+.member-viewport{overflow:hidden}
+.member-track{display:flex;transition:transform .45s ease;touch-action:pan-y}
+.member-slide{flex:0 0 100%;display:grid;grid-template-columns:1.12fr .88fr;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);min-height:420px}
+.member-slide .ph{position:relative;min-height:420px}
+.member-slide .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.member-slide .tx{padding:42px 40px;display:flex;flex-direction:column;justify-content:center}
+.member-slide h3{font-size:26px;font-weight:700;line-height:1.45}
+.member-slide p{font-size:15px;color:var(--ink2);margin-top:16px}
+.member-slide .who{margin-top:24px;font-size:13px;color:var(--muted)}
+.member-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+.member-nav .nav{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;display:inline-flex;align-items:center;justify-content:center}
+.member-nav .nav:hover{border-color:var(--ink)}
+.member-nav .dots{display:flex;align-items:center;gap:7px}
+.member-nav .dots button{width:7px;height:7px;padding:0;border-radius:99px;background:#d4d0cb}
+.member-nav .dots button[aria-current="true"]{width:18px;background:#1a1a1a}
 
 .slider-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
 .slider-btns{display:flex;gap:8px}
@@ -194,7 +203,10 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
 @media (max-width:960px){
   .menu{display:none}
   .burger{display:inline-flex}
-  .story-grid,.amenity-grid,#lounge .amenity-card{grid-template-columns:1fr}
+  .story-grid,.amenity-grid,#lounge .amenity-card,.member-slide{grid-template-columns:1fr}
+  .member-slide .ph{min-height:240px;aspect-ratio:16/10}
+  .member-slide .tx{padding:28px 24px 32px}
+  .member-slide h3{font-size:22px}
   .space-grid,.stores-grid{grid-template-columns:1fr 1fr}
   .cards-track,.config-strip,.config-notes{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -215,7 +227,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
   .hourglass{min-height:280px}
 }
 @media (prefers-reduced-motion:reduce){
-  .hero-track,.news-track,.pic-swap .pic-track{transition:none;scroll-behavior:auto}
+  .hero-track,.news-track,.pic-swap .pic-track,.member-track{transition:none;scroll-behavior:auto}
 }
 </style>
 </head>
@@ -607,27 +619,48 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
         <h2>会员故事</h2>
         <p class="en">Member Stories</p>
       </header>
-      <div class="stories-grid">
-        <article class="story-card">
-          <h3>帘子拉上之后，卡住两周的那章终于写完了。</h3>
-          <p>图书馆关门后不知道往哪去。隔帘位坐下，世界就小成一张桌子。不是那天更用力，是终于没有人从眼前走过去。</p>
-          <div class="who">匿名 · 备考学员 · 某门店</div>
-        </article>
-        <article class="story-card">
-          <h3>以前先放弃的是腰，不是计划。</h3>
-          <p>咖啡厅的椅子坐两个小时，人就开始找借口离开。换成西昊椅，珊瑚红的腰托刚好托住，台灯调到自己舒服的亮度，才发现原来可以坐到打烊。</p>
-          <div class="who">匿名 · 备考学员 · 某门店</div>
-        </article>
-        <article class="story-card">
-          <h3>吃完饭回到座位，笔记还摊在原来的地方。</h3>
-          <p>下班赶过去，打印、热饭、接水都在同一层。那种不用把状态重新拼起来的感觉，比多学一个小时更要紧。</p>
-          <div class="who">匿名 · 在职学习者 · 某门店</div>
-        </article>
-        <article class="story-card">
-          <h3>我们约了双人间，但没有坐成一桌吃饭。</h3>
-          <p>两张学习桌，两把西昊椅，各自的灯。想对答案时转过头，想安静时就低下去。同伴在，餐桌不在。</p>
-          <div class="who">匿名 · 学习搭子 · 某门店</div>
-        </article>
+      <div class="member-slider" id="memberSlider">
+        <div class="member-viewport">
+          <div class="member-track" id="memberTrack">
+            <article class="member-slide">
+              <div class="ph"><img src="img/vip-sihoo.webp" alt="拉开帘子的隔帘座位"></div>
+              <div class="tx">
+                <h3>帘子拉上之后，卡住两周的那章终于写完了。</h3>
+                <p>图书馆关门后不知道往哪去。隔帘位坐下，世界就小成一张桌子。不是那天更用力，是终于没有人从眼前走过去。</p>
+                <div class="who">匿名 · 备考学员 · 某门店</div>
+              </div>
+            </article>
+            <article class="member-slide">
+              <div class="ph"><img src="img/chair-sihoo-detail.webp" alt="西昊椅与珊瑚红腰托"></div>
+              <div class="tx">
+                <h3>以前先放弃的是腰，不是计划。</h3>
+                <p>咖啡厅的椅子坐两个小时，人就开始找借口离开。换成西昊椅，珊瑚红的腰托刚好托住，台灯调到自己舒服的亮度，才发现原来可以坐到打烊。</p>
+                <div class="who">匿名 · 备考学员 · 某门店</div>
+              </div>
+            </article>
+            <article class="member-slide">
+              <div class="ph"><img src="img/休息区_饮水机冰箱微波炉打印机.webp" alt="打印、加热与饮水的公共补给"></div>
+              <div class="tx">
+                <h3>吃完饭回到座位，笔记还摊在原来的地方。</h3>
+                <p>下班赶过去，打印、热饭、接水都在同一层。那种不用把状态重新拼起来的感觉，比多学一个小时更要紧。</p>
+                <div class="who">匿名 · 在职学习者 · 某门店</div>
+              </div>
+            </article>
+            <article class="member-slide">
+              <div class="ph"><img src="img/banner-env.webp" alt="并排的学习桌与各自的台灯"></div>
+              <div class="tx">
+                <h3>我们约了双人间，但没有坐成一桌吃饭。</h3>
+                <p>两张学习桌，两把西昊椅，各自的灯。想对答案时转过头，想安静时就低下去。同伴在，餐桌不在。</p>
+                <div class="who">匿名 · 学习搭子 · 某门店</div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="member-nav">
+          <button type="button" class="nav" id="memberPrev" aria-label="上一则故事"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="dots" id="memberDots" role="tablist" aria-label="会员故事"></div>
+          <button type="button" class="nav" id="memberNext" aria-label="下一则故事"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
       </div>
     </div>
   </section>
@@ -978,6 +1011,42 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
     },{passive:true});
     go(0);
   });
+
+  var member=document.getElementById('memberTrack');
+  if(member){
+    var slides=member.children.length;
+    var mi=0;
+    var mdots=document.getElementById('memberDots');
+    function mgo(k){
+      mi=(k+slides)%slides;
+      member.style.transform='translateX('+(-mi*100)+'%)';
+      Array.prototype.forEach.call(mdots.children,function(d,idx){
+        if(idx===mi)d.setAttribute('aria-current','true');
+        else d.removeAttribute('aria-current');
+      });
+    }
+    for(var s=0;s<slides;s++){
+      var db=document.createElement('button');
+      db.type='button';
+      db.dataset.i=String(s);
+      db.setAttribute('aria-label','第'+(s+1)+'则故事');
+      mdots.appendChild(db);
+    }
+    mdots.addEventListener('click',function(e){
+      var t=e.target.closest('button');
+      if(!t)return;
+      mgo(Number(t.dataset.i));
+    });
+    document.getElementById('memberPrev').addEventListener('click',function(){mgo(mi-1);});
+    document.getElementById('memberNext').addEventListener('click',function(){mgo(mi+1);});
+    var mx=0;
+    member.addEventListener('touchstart',function(e){mx=e.changedTouches[0].clientX;},{passive:true});
+    member.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-mx;
+      if(Math.abs(dx)>36)mgo(dx<0?mi+1:mi-1);
+    },{passive:true});
+    mgo(0);
+  }
 })();
 </script>
 </body>
