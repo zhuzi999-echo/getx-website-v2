@@ -58,7 +58,7 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
 .hero-copy{position:absolute;left:0;right:0;bottom:78px;z-index:2}
 .hero-copy .kicker{font-size:12px;letter-spacing:.28em;opacity:.85;margin-bottom:12px}
 .hero-copy h1{font-size:clamp(30px,4.4vw,50px);font-weight:700;line-height:1.28;letter-spacing:.01em;max-width:680px}
-.hero-copy .sub{margin-top:14px;font-size:16px;opacity:.92;max-width:460px}
+.hero-copy .sub{margin-top:14px;font-size:16px;opacity:.92;max-width:540px}
 .hero-nav{position:absolute;top:50%;z-index:3;width:44px;height:44px;margin-top:-22px;border-radius:50%;border:1px solid rgba(255,255,255,.55);color:#fff;background:rgba(20,18,16,.28);display:flex;align-items:center;justify-content:center}
 .hero-nav.prev{left:18px}
 .hero-nav.next{right:18px}
@@ -83,7 +83,7 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
 .space-card .tx{padding:22px 22px 26px}
 .space-card .tag{font-size:12px;color:var(--muted);letter-spacing:.08em;font-weight:600}
 .space-card h3{font-size:20px;font-weight:700;margin-top:6px}
-.space-card p{font-size:14px;color:var(--muted);margin-top:8px}
+.space-card p{font-size:14px;color:var(--ink2);margin-top:8px}
 .space-card ul{margin-top:14px;display:grid;gap:6px;font-size:13px;color:var(--ink2)}
 .space-card ul li{display:flex;gap:8px;align-items:flex-start}
 .space-card ul li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink);margin-top:7px;flex-shrink:0}
@@ -92,11 +92,11 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
 .subblock h3{font-size:22px;font-weight:700;margin-bottom:8px;text-align:center}
 .subblock .hint{text-align:center;color:var(--muted);font-size:14px;margin-bottom:28px}
 .config-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.config-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;text-align:center}
+.config-item{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;text-align:left}
 .config-item .ico{width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--soft);margin-bottom:14px}
 .config-item .ico img{width:100%;height:100%;object-fit:cover}
-.config-item h4{font-size:14px;font-weight:700}
-.config-item p{font-size:12px;color:var(--muted);margin-top:4px}
+.config-item h4{font-size:15px;font-weight:700}
+.config-item p{font-size:13px;color:var(--ink2);margin-top:6px;line-height:1.65}
 .config-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
 .config-notes div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--ink2)}
 .config-notes b{display:block;font-size:14px;margin-bottom:2px}
@@ -106,6 +106,11 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
 .amenity-card .ph{aspect-ratio:16/10;overflow:hidden;background:#eee}
 .amenity-card .ph img{width:100%;height:100%;object-fit:cover}
 .amenity-card .tx{padding:22px}
+#lounge .amenity-grid{grid-template-columns:1fr}
+#lounge .amenity-card{display:grid;grid-template-columns:1.15fr .85fr;align-items:stretch}
+#lounge .amenity-card .ph{aspect-ratio:auto;min-height:240px}
+#lounge .amenity-card .ph img{height:100%;object-fit:cover}
+#lounge .amenity-card .tx{display:flex;flex-direction:column;justify-content:center;padding:32px 28px}
 .amenity-card ul{margin-top:12px;display:grid;gap:8px;font-size:14px;color:var(--ink2)}
 
 .cards-track{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -155,7 +160,9 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
 .booking-mini-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;background:var(--ink);color:#fff;border-radius:20px;padding:22px 28px}
 .booking-mini h2{font-size:18px;font-weight:700}
 .booking-mini p{font-size:13px;opacity:.75;margin-top:4px}
-.booking-mini .btn{background:#fff;color:#111;border-color:#fff;flex-shrink:0}
+.booking-mini .acts{display:flex;flex-wrap:wrap;gap:10px;flex-shrink:0}
+.booking-mini .btn{background:#fff;color:#111;border-color:#fff}
+.booking-mini .btn-line{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
 
 .partner{text-align:center;max-width:640px;margin:0 auto}
 .partner h2{font-size:28px;font-weight:700}
@@ -178,7 +185,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
 @media (max-width:960px){
   .menu{display:none}
   .burger{display:inline-flex}
-  .story-grid,.amenity-grid{grid-template-columns:1fr}
+  .story-grid,.amenity-grid,#lounge .amenity-card{grid-template-columns:1fr}
   .space-grid,.stores-grid{grid-template-columns:1fr 1fr}
   .cards-track,.config-strip,.config-notes{grid-template-columns:1fr 1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
@@ -216,7 +223,6 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       <a href="#config">产品配置</a>
       <a href="#public">公共空间</a>
       <a href="#stories">会员故事</a>
-      <a href="#news">资讯</a>
       <a href="#stores">门店</a>
     </nav>
     <div class="nav-cta">
@@ -231,7 +237,6 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
     <a href="#public">公共空间</a>
     <a href="#cards">考季体验卡</a>
     <a href="#stories">会员故事</a>
-    <a href="#news">资讯</a>
     <a href="#stores">门店</a>
     <a href="#booking">预约座位</a>
     <a href="#partner">合作加入</a>
@@ -247,7 +252,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           <div class="wrap">
             <p class="kicker">空间</p>
             <h1>学习与工作，本可以更舒适。</h1>
-            <p class="sub">白墙、窗光，和分得清楚的座位。得到 GetX，给长时间学习一处可以回来的地方。</p>
+            <p class="sub">白墙、窗光，座位分得清楚。得到 GetX——给长时间学习，留一处可以回来的地方。</p>
           </div>
         </div>
       </article>
@@ -256,8 +261,8 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
         <div class="hero-copy">
           <div class="wrap">
             <p class="kicker">环境</p>
-            <h1>极佳的环境，让专注自然发生。</h1>
-            <p class="sub">少一点来回走动，多一点安稳的光和空气。坐下来之后，不容易被带走。</p>
+            <h1>好环境，是为了让你坐得住。</h1>
+            <p class="sub">少一点来回走动，多一点安稳的光和空气。坐下之后，人不容易被带走。</p>
           </div>
         </div>
       </article>
@@ -266,8 +271,8 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
         <div class="hero-copy">
           <div class="wrap">
             <p class="kicker">体验</p>
-            <h1>关于体验，我们从不妥协。</h1>
-            <p class="sub">西昊浅灰网布椅、珊瑚红腰托、可调台灯与宽大桌面。舒适落在每天都会碰到的地方。</p>
+            <h1>每天都会碰到的地方，我们不凑合。</h1>
+            <p class="sub">西昊浅灰网布椅、珊瑚红腰托、可调台灯与宽大桌面。舒适，落在真正用得上的细节里。</p>
           </div>
         </div>
       </article>
@@ -286,9 +291,10 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       <div class="story-grid">
         <div class="story-copy">
           <h3>GETX STORY</h3>
-          <p class="title">在家和教室之外，留一处可以安静回来的地方。</p>
-          <p>2025 年，GetX 诞生于山东。我们想做城市里的第三空间：给考公、考研和需要深下来的人。</p>
-          <p>白墙、清楚的分区，把舒适做进椅子、灯光和桌子。愿你在这里有所得，也更接近想成为的自己。</p>
+          <p class="title">给专注，安一个落脚处</p>
+          <p>2025 年，GetX 诞生于中国山东省。</p>
+          <p>GetX 怀揣对极致空间体验与设计美学的梦想，打造城市中的第三空间。</p>
+          <p>愿每位走进来的人在 GetX 有所得、有所获，最终成长为理想中的自己。</p>
           <div class="slogan">得到，此刻开始<em>Start now. Get more.</em></div>
         </div>
         <div class="hourglass" aria-hidden="true">
@@ -309,7 +315,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       <header class="sec-head">
         <h2>座位设计</h2>
         <p class="en">Seat Design</p>
-        <p class="lead">只介绍有哪些学习座位。双人间、多人间是一起学习的位子，不是餐桌。</p>
+        <p class="lead">按你当下的状态选座：要沉浸、要光、要独处，或要并肩。</p>
       </header>
       <div class="space-grid">
         <article class="space-card">
@@ -317,11 +323,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           <div class="tx">
             <div class="tag">沉浸座</div>
             <h3>单人桌 / 隔板沉浸座</h3>
-            <p>隔板把视线收短，适合一个人稳住节奏、坐得比较久的时候。</p>
-            <ul>
-              <li>西昊浅灰网布椅，珊瑚红腰托</li>
-              <li>宽大桌面 · 可调节台灯</li>
-            </ul>
+            <p>隔板把视线收短，外界少进来一分，注意力就多留一分。适合一个人稳住节奏、连续坐上好几个小时的时候——坐下，就进入自己的节奏。</p>
           </div>
         </article>
         <article class="space-card">
@@ -329,11 +331,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           <div class="tx">
             <div class="tag">观景区</div>
             <h3>临窗观景位</h3>
-            <p>沿白墙和落地窗展开。需要一点光、一点远处的时候，坐这里。</p>
-            <ul>
-              <li>窗景与自然光</li>
-              <li>同样是西昊椅，腰托一条珊瑚红弧线</li>
-            </ul>
+            <p>沿白墙与落地窗展开，自然光和远处景致都在手边。学久了抬眼就能透口气，适合既要专注、又需要一点开阔感的段落。</p>
           </div>
         </article>
         <article class="space-card">
@@ -341,11 +339,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           <div class="tx">
             <div class="tag">VIP</div>
             <h3>VIP 隔帘位</h3>
-            <p>靠墙的独立隔断，帘子拉上，共享空间里也能少被看见。</p>
-            <ul>
-              <li>适合冲刺阶段少受打扰</li>
-              <li>帘内仍是学习桌，不是休息区</li>
-            </ul>
+            <p>靠墙的独立隔断，帘子一拉，共享厅里也能拥有自己的边界。适合冲刺、复盘，或任何不想被路过目光打断的时刻。</p>
           </div>
         </article>
         <article class="space-card">
@@ -353,11 +347,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           <div class="tx">
             <div class="tag">独立空间</div>
             <h3>VIP 独立包间</h3>
-            <p>更完整的单人空间。长时间学习，或需要安静说话的面试，都可以约这里。</p>
-            <ul>
-              <li>西昊椅 · 可调节台灯</li>
-              <li>独立空间可配电动升降桌与新风温控</li>
-            </ul>
+            <p>更完整的一人空间：升降桌、新风温控，关上门就是你的场。适合长时段深挖，或需要安静开口的面试与通话。</p>
           </div>
         </article>
         <article class="space-card">
@@ -365,11 +355,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           <div class="tx">
             <div class="tag">同行学习</div>
             <h3>双人间 / 多人间</h3>
-            <p>给一起备考的人。里面是学习桌和西昊椅，各自有灯，不是就餐的桌子。</p>
-            <ul>
-              <li>看得见同伴，但不挤在一张餐桌旁</li>
-              <li>讨论完可以各自回到自己的桌面</li>
-            </ul>
+            <p>空间各自独立，学习一起并肩。两张或多张学习桌并排，互不打扰。这里不只是一起学习的位子，更是学习搭子一起往前走的空间。</p>
           </div>
         </article>
       </div>
@@ -381,34 +367,29 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       <header class="sec-head">
         <h2>产品配置</h2>
         <p class="en">What You Sit With</p>
-        <p class="lead">座位上的硬件单独说明。椅子统一为西昊浅灰网布，腰间是一条珊瑚红或粉红的弧形腰托。</p>
+        <p class="lead">把每天都会碰到的细节，做成可以信赖的标准。</p>
       </header>
       <div class="config-strip">
         <div class="config-item">
           <div class="ico"><img src="img/chair-sihoo-detail.webp" alt="西昊人体工学椅，浅灰网布与珊瑚红腰托"></div>
           <h4>西昊人体工学椅</h4>
-          <p>浅灰网布，珊瑚红腰托弧条</p>
+          <p>浅灰网布、珊瑚红弧形腰托，长坐时把腰背托住——让「坚持」先败给身体这件事，尽量少发生。</p>
         </div>
         <div class="config-item">
           <div class="ico"><img src="img/product-equipment-lamp.webp" alt="可调节台灯"></div>
           <h4>可调节台灯</h4>
-          <p>超国标无极调光</p>
+          <p>超国标无极调光，亮暗随你。夜场、傍晚、阴天，光线稳在舒服的那一档。</p>
         </div>
         <div class="config-item">
           <div class="ico"><img src="img/product-equipment-purifier.webp" alt="戴森空气净化器"></div>
           <h4>戴森空气净化器</h4>
-          <p>把空气留得干净一点</p>
+          <p>清新空气留在座位周围，减少闷、燥、昏——专注才能待得久。</p>
         </div>
         <div class="config-item">
           <div class="ico"><img src="img/private-sihoo.webp" alt="白墙窗边的宽大书桌与西昊椅"></div>
           <h4>环保宽大桌子</h4>
-          <p>资料摊得开；独立空间可选电动升降</p>
+          <p>桌面够铺开书和电脑；独立空间可选电动升降，坐久了站一站，节奏由你切换。</p>
         </div>
-      </div>
-      <div class="config-notes">
-        <div><b>电动升降桌</b>独立包间可坐站切换，减少久坐。</div>
-        <div><b>新风与温控</b>独立空间配备新风和空调，空气更稳。</div>
-        <div><b>全屋智能</b>预约、自助入场、使用、离开，在小程序里完成。</div>
       </div>
     </div>
   </section>
@@ -418,7 +399,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       <header class="sec-head">
         <h2>公共空间</h2>
         <p class="en">Shared Rooms</p>
-        <p class="lead">休闲和补给都在学习座位之外。先休息，再回来；打印和加热也不占用你的桌子。</p>
+        <p class="lead">学习在座位上发生；休息和补给，我们放在座位之外。</p>
       </header>
 
       <div id="lounge">
@@ -427,41 +408,29 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
             <div class="ph"><img src="img/dining.webp" alt="休闲区的就餐休息桌"></div>
             <div class="tx">
               <h3 style="font-size:20px">休闲区 · 就餐休息</h3>
-              <p style="font-size:14px;color:var(--muted);margin-top:8px">这里是休息桌，不是双人间，也不是多人间。饿了、累了，到这边停一下，吃完再回到自己的学习位。笔记还在原来的桌上。</p>
-            </div>
-          </div>
-          <div class="amenity-card">
-            <div class="tx" style="padding:28px 26px">
-              <div class="tag" style="font-size:12px;color:var(--muted);letter-spacing:.08em;font-weight:600">和座位分开</div>
-              <h3 style="font-size:20px;margin-top:8px">学习归学习，休息归休息</h3>
-              <ul>
-                <li>· 双人 / 多人学习位在「座位设计」</li>
-                <li>· 休闲区只用于就餐和短暂停留</li>
-                <li>· 不把餐桌写成一种座位类型</li>
-              </ul>
+              <p style="font-size:14px;color:var(--ink2);margin-top:8px">这里是停一下的地方：大桌、补给、缓口气。吃完、歇完，再回到你的学习位——休息区不作学习桌用。</p>
             </div>
           </div>
         </div>
       </div>
 
       <div class="subblock" id="amenity">
-        <h3>公共增值服务</h3>
-        <p class="hint">便利补给，不属于休闲区，也不算一种座位。</p>
+        <h3>公共增值</h3>
+        <p class="hint">惠普打印、美的冰箱与微波炉、品牌饮水。</p>
         <div class="amenity-grid">
           <div class="amenity-card">
             <div class="ph"><img src="img/休息区_饮水机冰箱微波炉打印机.webp" alt="惠普打印机、美的冰箱、微波炉与饮水机"></div>
             <div class="tx">
-              <h3 style="font-size:18px">打印、冷藏、加热、饮水</h3>
-              <p style="font-size:14px;color:var(--muted);margin-top:8px">放在公共补给处，学习间隙不用跑远。</p>
+              <h3 style="font-size:18px">高标准配置，补给不必另寻地方</h3>
+              <p style="font-size:14px;color:var(--ink2);margin-top:8px">惠普打印、美的冰箱与微波炉、品牌饮水——学习更省心。</p>
             </div>
           </div>
           <div class="amenity-card">
             <div class="tx" style="padding:28px 26px">
               <ul>
-                <li>· 打印 · <strong>惠普</strong>打印机</li>
-                <li>· 冷藏 · <strong>美的</strong>冰箱</li>
-                <li>· 加热 · <strong>美的</strong>微波炉</li>
-                <li>· 饮水 · 品牌饮水机</li>
+                <li>· 打印 · <strong>惠普</strong></li>
+                <li>· 冰箱与微波炉 · <strong>美的</strong></li>
+                <li>· 饮水 · 品牌饮水</li>
               </ul>
             </div>
           </div>
@@ -475,37 +444,32 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       <header class="sec-head">
         <h2>考季体验卡</h2>
         <p class="en">Exam Season Pass</p>
-        <p class="lead">按备考阶段理解体验卡。<span class="tbd">示例 · 待确认</span></p>
+        <p class="lead">按备考阶段准备，具体权益以到店/小程序为准；官网不展示价格。</p>
       </header>
       <div class="cards-track">
         <article class="phase">
-          <div class="no">01 · 示例</div>
+          <div class="no">01</div>
           <h3>启程卡</h3>
-          <div class="when">备考启动期</div>
-          <p>先熟悉分区和自助进出，把到店变成一件顺的事。</p>
+          <p>刚起跑，先熟悉节奏和座位。</p>
         </article>
         <article class="phase">
-          <div class="no">02 · 示例</div>
+          <div class="no">02</div>
           <h3>冲刺卡</h3>
-          <div class="when">临考冲刺期</div>
-          <p>来得更勤的时候，优先沉浸座或 VIP。</p>
+          <p>考前加频次，优先沉浸/VIP 深学位。</p>
         </article>
         <article class="phase">
-          <div class="no">03 · 示例</div>
+          <div class="no">03</div>
           <h3>稳定卡</h3>
-          <div class="when">长期备考期</div>
-          <p>跨过很多个星期，仍然有同一张桌子可以回来。</p>
+          <p>长期备考，把这里当成固定的第三空间。</p>
         </article>
         <article class="phase">
-          <div class="no">04 · 示例</div>
+          <div class="no">04</div>
           <h3>过渡卡</h3>
-          <div class="when">考季衔接期</div>
-          <p>一场考完、下一场还没开始的那段空档。</p>
+          <p>考季间隙，保持手感不断档。</p>
         </article>
       </div>
       <div class="cards-cta">
-        <a class="btn btn-dark" href="#booking">到小程序了解体验卡</a>
-        <p style="margin-top:12px;font-size:12px;color:var(--muted)">权益以实际为准 · 官网不展示价格</p>
+        <a class="btn btn-dark" href="#booking">到小X微信了解体验卡</a>
       </div>
     </div>
   </section>
@@ -515,95 +479,29 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       <header class="sec-head">
         <h2>会员故事</h2>
         <p class="en">Member Stories</p>
-        <p class="lead">下面是示例，写法贴近备考里真实的一天。正式上线后换成经授权的故事。</p>
       </header>
       <div class="stories-grid">
         <article class="story-card">
-          <div class="badge">示例</div>
           <h3>帘子拉上之后，卡住两周的那章终于写完了。</h3>
           <p>图书馆关门后不知道往哪去。隔帘位坐下，世界就小成一张桌子。不是那天更用力，是终于没有人从眼前走过去。</p>
-          <div class="who">示例 · 考研 · 某城门店</div>
+          <div class="who">匿名 · 备考学员 · 某门店</div>
         </article>
         <article class="story-card">
-          <div class="badge">示例</div>
           <h3>以前先放弃的是腰，不是计划。</h3>
           <p>咖啡厅的椅子坐两个小时，人就开始找借口离开。换成西昊椅，珊瑚红的腰托刚好托住，台灯调到自己舒服的亮度，才发现原来可以坐到打烊。</p>
-          <div class="who">示例 · 考公 · 某城门店</div>
+          <div class="who">匿名 · 备考学员 · 某门店</div>
         </article>
         <article class="story-card">
-          <div class="badge">示例</div>
           <h3>吃完饭回到座位，笔记还摊在原来的地方。</h3>
           <p>下班赶过去，打印、热饭、接水都在同一层。那种不用把状态重新拼起来的感觉，比多学一个小时更要紧。</p>
-          <div class="who">示例 · 在职备考 · 某城门店</div>
+          <div class="who">匿名 · 在职学习者 · 某门店</div>
         </article>
         <article class="story-card">
-          <div class="badge">示例</div>
           <h3>我们约了双人间，但没有坐成一桌吃饭。</h3>
           <p>两张学习桌，两把西昊椅，各自的灯。想对答案时转过头，想安静时就低下去。同伴在，餐桌不在。</p>
-          <div class="who">示例 · 同行备考 · 某城门店</div>
+          <div class="who">匿名 · 学习搭子 · 某门店</div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section class="sec" id="news">
-    <div class="wrap">
-      <div class="slider-head">
-        <header class="sec-head" style="text-align:left;margin:0">
-          <h2>最新资讯</h2>
-          <p class="en">Latest</p>
-          <p class="lead" style="margin:12px 0 0">示例资讯，可左右滑动。正式活动与照片上线后替换。</p>
-        </header>
-        <div class="slider-btns" aria-hidden="false">
-          <button type="button" id="newsPrev" aria-label="上一条资讯">‹</button>
-          <button type="button" id="newsNext" aria-label="下一条资讯">›</button>
-        </div>
-      </div>
-      <div class="news-viewport">
-        <div class="news-track" id="newsTrack" tabindex="0" aria-label="资讯列表">
-          <article class="news-card">
-            <div class="ph"><img src="img/zone-overview.webp" alt=""></div>
-            <div class="tx">
-              <div class="tag">示例 · 品牌</div>
-              <h3>一周年庆典圆满落幕</h3>
-              <p>得到 GetX 走过第一年。白墙还是那样安静，多出来的是愿意反复回来的人。</p>
-            </div>
-          </article>
-          <article class="news-card">
-            <div class="ph"><img src="img/getx-space-private.webp" alt=""></div>
-            <div class="tx">
-              <div class="tag">示例 · 门店</div>
-              <h3>新店盛大开业</h3>
-              <p>一座新的城市，同一套座位：沉浸座、临窗位、隔帘和包间，先把学习的地方备好。</p>
-            </div>
-          </article>
-          <article class="news-card">
-            <div class="ph"><img src="img/chair-sihoo-detail.webp" alt=""></div>
-            <div class="tx">
-              <div class="tag">示例 · 会员</div>
-              <h3>会员体系全新上线</h3>
-              <p>到店次数被轻轻记住。权益在小程序里看，这里不谈价格。</p>
-            </div>
-          </article>
-          <article class="news-card">
-            <div class="ph"><img src="img/hero-sihoo.webp" alt=""></div>
-            <div class="tx">
-              <div class="tag">示例 · 考季</div>
-              <h3>考季自习夜开放</h3>
-              <p>临考那几周，灯留得更晚一点。仍然是自己的桌子，只是夜色换了。</p>
-            </div>
-          </article>
-          <article class="news-card">
-            <div class="ph"><img src="img/vip-corridor.webp" alt=""></div>
-            <div class="tx">
-              <div class="tag">示例 · 活动</div>
-              <h3>城市会员沙龙小记</h3>
-              <p>短短一场见面，聊聊座位怎么选。散场后，多数人还是回到自己的位子上。</p>
-            </div>
-          </article>
-        </div>
-      </div>
-      <div class="news-dots" id="newsDots" role="tablist" aria-label="资讯位置"></div>
     </div>
   </section>
 
@@ -671,7 +569,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           </div>
         </article>
         <article class="store-card">
-          <div class="ph"><div class="empty">门店实拍待补充</div></div>
+          <div class="ph"><img src="img/private-sihoo.webp" alt="吉林船营店空间示意"></div>
           <div class="tx">
             <h3>吉林船营店</h3>
             <p>吉林省 · 吉林市船营区</p>
@@ -696,14 +594,78 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
     </div>
   </section>
 
+  <section class="sec" id="news">
+    <div class="wrap">
+      <div class="slider-head">
+        <header class="sec-head" style="text-align:left;margin:0">
+          <h2>最新资讯</h2>
+          <p class="en">Latest</p>
+          <p class="lead" style="margin:12px 0 0">更多安排见小程序。</p>
+        </header>
+        <div class="slider-btns" aria-hidden="false">
+          <button type="button" id="newsPrev" aria-label="上一条资讯">‹</button>
+          <button type="button" id="newsNext" aria-label="下一条资讯">›</button>
+        </div>
+      </div>
+      <div class="news-viewport">
+        <div class="news-track" id="newsTrack" tabindex="0" aria-label="资讯列表">
+          <article class="news-card">
+            <div class="ph"><img src="img/zone-overview.webp" alt=""></div>
+            <div class="tx">
+              <div class="tag">品牌</div>
+              <h3>一周年，我们和学员一起走过</h3>
+              <p>这一年，和学员一起走过。</p>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="ph"><img src="img/getx-space-private.webp" alt=""></div>
+            <div class="tx">
+              <div class="tag">门店</div>
+              <h3>新店开业 · 城市与地址以小程序/美团为准</h3>
+              <p>具体城市与地址，以小程序和美团为准。</p>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="ph"><img src="img/chair-sihoo-detail.webp" alt=""></div>
+            <div class="tx">
+              <div class="tag">会员</div>
+              <h3>会员体系更新说明</h3>
+              <p>更新说明见小程序。</p>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="ph"><img src="img/hero-sihoo.webp" alt=""></div>
+            <div class="tx">
+              <div class="tag">考季</div>
+              <h3>考季自习夜开放</h3>
+              <p>开放安排见小程序。</p>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="ph"><img src="img/vip-corridor.webp" alt=""></div>
+            <div class="tx">
+              <div class="tag">活动</div>
+              <h3>城市会员沙龙小记</h3>
+              <p>活动信息见小程序。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="news-dots" id="newsDots" role="tablist" aria-label="资讯位置"></div>
+    </div>
+  </section>
+
   <section class="booking-mini" id="booking">
     <div class="wrap">
       <div class="booking-mini-inner">
         <div>
           <h2>预约座位</h2>
-          <p>官网只留这个入口。选座、到店指引都在小程序里完成，本页不展示价格。</p>
+          <p>官网只留轻入口。选座、开门与到店指引在小程序完成。</p>
         </div>
-        <a class="btn" href="#miniprogram" id="miniprogram">前往小程序</a>
+        <div class="acts">
+          <a class="btn" href="#miniprogram" id="miniprogram">预约座位 · 跳转小程序</a>
+          <a class="btn btn-line" href="#seats">查看座位类型</a>
+        </div>
       </div>
     </div>
   </section>
@@ -712,10 +674,10 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
     <div class="wrap">
       <div class="partner">
         <h2>合作加入</h2>
-        <p>认同这套空间体验的合伙人、加盟与媒体，欢迎联系。联系方式待补充。</p>
+        <p>欢迎认同空间体验的合伙人、加盟与媒体，通过小程序与我们联系。</p>
         <div class="btns">
-          <a class="btn btn-dark" href="#partner">成为合伙人 <span class="tbd">待填</span></a>
-          <a class="btn btn-ghost" href="#partner">联系我们 <span class="tbd">待填</span></a>
+          <a class="btn btn-dark" href="#booking">成为合伙人</a>
+          <a class="btn btn-ghost" href="#booking">联系我们</a>
         </div>
       </div>
     </div>
@@ -732,7 +694,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
         <div class="qr-row">
           <div class="qr"><div class="box">QR</div><span>公众号</span></div>
           <div class="qr"><div class="box">QR</div><span>小程序</span></div>
-          <div class="qr"><div class="box">QR</div><span>小得微信</span></div>
+          <div class="qr"><div class="box">QR</div><span>小X微信</span></div>
         </div>
       </div>
       <div class="footer-col">
@@ -751,14 +713,13 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       </div>
       <div class="footer-col">
         <h4>预约</h4>
-        <a href="#booking">前往小程序</a>
+        <a href="#booking">预约座位 · 跳转小程序</a>
         <a href="#news">最新资讯</a>
         <a href="#partner">合作加入</a>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 得到 GetX</span>
-      <span>ICP 备案号待填</span>
     </div>
   </div>
 </footer>
