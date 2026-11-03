@@ -97,6 +97,15 @@ button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
 .config-item .ico img{width:100%;height:100%;object-fit:cover}
 .config-item h4{font-size:15px;font-weight:700}
 .config-item p{font-size:13px;color:var(--ink2);margin-top:6px;line-height:1.65}
+.pic-swap{position:relative}
+.pic-swap .pic-track{position:absolute;inset:0;display:flex;transition:transform .4s ease;touch-action:pan-y}
+.pic-swap .pic-track img{flex:0 0 100%;width:100%;height:100%;max-width:none;object-fit:cover}
+.pic-ctrl{position:absolute;right:10px;bottom:10px;z-index:2;display:flex;align-items:center;gap:2px;height:34px;padding:0 6px;background:#fff;border-radius:999px;box-shadow:0 8px 22px rgba(26,24,22,.16)}
+.pic-ctrl button{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#1a1a1a}
+.pic-ctrl .pic-dots{display:flex;align-items:center;gap:5px;padding:0 2px}
+.pic-ctrl .pic-dots button{width:6px;height:6px;min-width:6px;padding:0;background:#d4d0cb}
+.pic-ctrl .pic-dots button[aria-current="true"]{width:16px;background:#1a1a1a}
+.config-item .pic-ctrl{right:8px;bottom:8px;height:30px}
 .config-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
 .config-notes div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13px;color:var(--ink2)}
 .config-notes b{display:block;font-size:14px;margin-bottom:2px}
@@ -206,7 +215,7 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
   .hourglass{min-height:280px}
 }
 @media (prefers-reduced-motion:reduce){
-  .hero-track,.news-track{transition:none;scroll-behavior:auto}
+  .hero-track,.news-track,.pic-swap .pic-track{transition:none;scroll-behavior:auto}
 }
 </style>
 </head>
@@ -319,7 +328,18 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       </header>
       <div class="space-grid">
         <article class="space-card">
-          <div class="ph"><img src="img/desk-pov.webp" alt="白墙隔板里的单人桌"></div>
+          <div class="ph pic-swap">
+            <div class="pic-track">
+              <img src="img/immersive-sihoo.webp" alt="隔板沉浸座与西昊椅">
+              <img src="img/desk-pov.webp" alt="白墙隔板里的单人桌">
+              <img src="img/banner-exp.webp" alt="沉浸座里的白色灯条台灯">
+            </div>
+            <div class="pic-ctrl" aria-label="沉浸座图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <div class="tx">
             <div class="tag">沉浸座</div>
             <h3>单人桌 / 隔板沉浸座</h3>
@@ -327,7 +347,18 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           </div>
         </article>
         <article class="space-card">
-          <div class="ph"><img src="img/hero-sihoo.webp" alt="白墙与落地窗旁的临窗座位"></div>
+          <div class="ph pic-swap">
+            <div class="pic-track">
+              <img src="img/hero-sihoo.webp" alt="白墙与落地窗旁的临窗座位">
+              <img src="img/banner-env.webp" alt="临窗座位与白色灯条台灯">
+              <img src="img/private-sihoo.webp" alt="窗边并排的学习桌">
+            </div>
+            <div class="pic-ctrl" aria-label="观景位图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <div class="tx">
             <div class="tag">观景区</div>
             <h3>临窗观景位</h3>
@@ -335,7 +366,18 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           </div>
         </article>
         <article class="space-card">
-          <div class="ph"><img src="img/vip-corridor.webp" alt="白色隔帘座位走廊"></div>
+          <div class="ph pic-swap">
+            <div class="pic-track">
+              <img src="img/vip-corridor.webp" alt="白色隔帘座位走廊">
+              <img src="img/vip-sihoo.webp" alt="拉开帘子的隔帘座位与西昊椅">
+              <img src="img/getx-space-private.webp" alt="一排白色隔帘包间">
+            </div>
+            <div class="pic-ctrl" aria-label="隔帘位图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <div class="tx">
             <div class="tag">VIP</div>
             <h3>VIP 隔帘位</h3>
@@ -343,7 +385,18 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           </div>
         </article>
         <article class="space-card">
-          <div class="ph"><img src="img/getx-space-private.webp" alt="白色独立包间与西昊椅"></div>
+          <div class="ph pic-swap">
+            <div class="pic-track">
+              <img src="img/getx-space-private.webp" alt="白色独立包间与西昊椅">
+              <img src="img/vip-sihoo.webp" alt="包间内的西昊椅与桌面">
+              <img src="img/banner-exp.webp" alt="独立隔间里的白色灯条台灯">
+            </div>
+            <div class="pic-ctrl" aria-label="独立包间图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <div class="tx">
             <div class="tag">独立空间</div>
             <h3>VIP 独立包间</h3>
@@ -351,7 +404,18 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
           </div>
         </article>
         <article class="space-card">
-          <div class="ph"><img src="img/三人间.webp" alt="靠窗的多人学习桌与西昊椅"></div>
+          <div class="ph pic-swap">
+            <div class="pic-track">
+              <img src="img/三人间.webp" alt="靠窗的多人学习桌与西昊椅">
+              <img src="img/banner-env.webp" alt="并排的三张学习桌">
+              <img src="img/private-sihoo.webp" alt="窗边并排的学习位">
+            </div>
+            <div class="pic-ctrl" aria-label="双人多人图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <div class="tx">
             <div class="tag">同行学习</div>
             <h3>双人间 / 多人间</h3>
@@ -371,22 +435,65 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
       </header>
       <div class="config-strip">
         <div class="config-item">
-          <div class="ico"><img src="img/chair-sihoo-detail.webp" alt="西昊人体工学椅，浅灰网布与珊瑚红腰托"></div>
+          <div class="ico pic-swap">
+            <div class="pic-track">
+              <img src="img/chair-sihoo-detail.webp" alt="西昊人体工学椅，浅灰网布与珊瑚红腰托">
+              <img src="img/desk-sihoo-detail.webp" alt="西昊椅背与珊瑚红腰托">
+              <img src="img/immersive-sihoo.webp" alt="座位上的西昊椅">
+            </div>
+            <div class="pic-ctrl" aria-label="西昊椅图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <h4>西昊人体工学椅</h4>
           <p>浅灰网布、珊瑚红弧形腰托，长坐时把腰背托住——让「坚持」先败给身体这件事，尽量少发生。</p>
         </div>
         <div class="config-item">
-          <div class="ico"><img src="img/product-equipment-lamp.webp" alt="可调节台灯"></div>
+          <div class="ico pic-swap">
+            <div class="pic-track">
+              <img src="img/product-equipment-lamp.webp" alt="白色灯条护眼台灯">
+              <img src="img/banner-exp.webp" alt="隔间里的白色灯条台灯">
+              <img src="img/banner-env.webp" alt="临窗座位上的白色灯条台灯">
+            </div>
+            <div class="pic-ctrl" aria-label="台灯图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <h4>可调节台灯</h4>
           <p>超国标无极调光，亮暗随你。夜场、傍晚、阴天，光线稳在舒服的那一档。</p>
         </div>
         <div class="config-item">
-          <div class="ico"><img src="img/product-equipment-purifier.webp" alt="戴森空气净化器"></div>
+          <div class="ico pic-swap">
+            <div class="pic-track">
+              <img src="img/product-equipment-purifier.webp" alt="戴森空气净化器">
+              <img src="img/product-equipment-purifier.webp" alt="戴森空气净化器近景" style="object-position:center 72%">
+            </div>
+            <div class="pic-ctrl" aria-label="净化器图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <h4>戴森空气净化器</h4>
           <p>清新空气留在座位周围，减少闷、燥、昏——专注才能待得久。</p>
         </div>
         <div class="config-item">
-          <div class="ico"><img src="img/private-sihoo.webp" alt="白墙窗边的宽大书桌与西昊椅"></div>
+          <div class="ico pic-swap">
+            <div class="pic-track">
+              <img src="img/private-sihoo.webp" alt="白墙窗边的宽大书桌与西昊椅">
+              <img src="img/banner-env.webp" alt="临窗宽大桌面">
+              <img src="img/desk-pov.webp" alt="隔板里的宽大桌面">
+            </div>
+            <div class="pic-ctrl" aria-label="桌子图片">
+              <button type="button" class="pic-prev" aria-label="上一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8.6 2.4 4.2 7l4.4 4.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span class="pic-dots"></span>
+              <button type="button" class="pic-next" aria-label="下一张"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5.4 2.4 9.8 7 5.4 11.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
           <h4>环保宽大桌子</h4>
           <p>桌面够铺开书和电脑；独立空间可选电动升降，坐久了站一站，节奏由你切换。</p>
         </div>
@@ -814,6 +921,43 @@ footer{background:#111;color:#fff;padding:56px 0 32px;margin-top:40px}
     news.addEventListener('scroll',paint,{passive:true});
     paint();
   }
+
+  document.querySelectorAll('.pic-swap').forEach(function(box){
+    var track=box.querySelector('.pic-track');
+    var imgs=track.querySelectorAll('img');
+    var n=imgs.length;
+    var i=0;
+    var dots=box.querySelector('.pic-dots');
+    function go(k){
+      i=(k+n)%n;
+      track.style.transform='translateX('+(-i*100)+'%)';
+      Array.prototype.forEach.call(dots.children,function(d,idx){
+        if(idx===i)d.setAttribute('aria-current','true');
+        else d.removeAttribute('aria-current');
+      });
+    }
+    for(var k=0;k<n;k++){
+      var b=document.createElement('button');
+      b.type='button';
+      b.dataset.i=String(k);
+      b.setAttribute('aria-label','第'+(k+1)+'张');
+      dots.appendChild(b);
+    }
+    dots.addEventListener('click',function(e){
+      var t=e.target.closest('button');
+      if(!t)return;
+      go(Number(t.dataset.i));
+    });
+    box.querySelector('.pic-prev').addEventListener('click',function(){go(i-1);});
+    box.querySelector('.pic-next').addEventListener('click',function(){go(i+1);});
+    var x0=0;
+    box.addEventListener('touchstart',function(e){x0=e.changedTouches[0].clientX;},{passive:true});
+    box.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-x0;
+      if(Math.abs(dx)>36)go(dx<0?i+1:i-1);
+    },{passive:true});
+    go(0);
+  });
 })();
 </script>
 </body>
