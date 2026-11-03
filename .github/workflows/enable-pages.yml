@@ -1,0 +1,36 @@
+name: Enable GitHub Pages
+
+# The cloud agent token can push code but cannot turn Pages on (needs
+# pages=write). This workflow's GITHUB_TOKEN can. It only reruns when
+# this file changes.
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/enable-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+
+jobs:
+  enable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish site from main /
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -eu
+          payload='{"build_type":"legacy","source":{"branch":"main","path":"/"}}'
+          if gh api "repos/${REPO}/pages" > /tmp/pages.json; then
+            echo "Pages site already exists; updating source to main /"
+            gh api --method PUT "repos/${REPO}/pages" --input - <<<"$payload"
+          else
+            echo "Creating Pages site from main /"
+            gh api --method POST "repos/${REPO}/pages" --input - <<<"$payload"
+          fi
+          echo "---- pages site ----"
+          gh api "repos/${REPO}/pages"
